@@ -28,7 +28,7 @@
 
 <p align="center"><img src="assets/main.png" alt="3301-Yup main window" width="80%"></p>
 
-Open any archive, look inside, then click **Extract here** or **Extract to…**. Drop files in, pick a level, and click **Create .yup**. That's the whole app.
+Open any archive and walk through it like a folder in Explorer: sortable columns, real icons, double-click to open a file. Then click **Extract here** or **Extract to…**. Drop files in, pick a level, and click **Create .yup**. That's the whole app.
 
 ## 📊 Live progress
 
@@ -53,7 +53,7 @@ You see both files with their real icons, sizes and dates, then pick **Yes**, **
 | | |
 |---|---|
 | 📦 **Packs** | into `.yup`: zstd on every CPU core, with media stored as-is |
-| 📂 **Opens** | `.yup` `.zip` `.7z` `.rar` `.tar` `.tar.gz` `.tgz`, password zip/7z included |
+| 📂 **Opens** | `.yup` `.zip` `.7z` `.rar` `.tar` `.tar.gz` `.tgz` `.gz`, password zip/7z included |
 | 🖱️ **Right-click menu** | Extract here · Extract to folder · Add to *name*.yup |
 | 💣 **Zip bomb shield** | refuses archives that would blow up to over 1000× their size, and checks free disk space first |
 | 🛡️ **Safe paths** | no archive can write outside the folder you picked |
