@@ -18,11 +18,40 @@
 
 ## ⚡ Why 3301-Yup?
 
-7-Zip and WinRAR were built when PCs had one or two cores. **3301-Yup packs on every core at once**, and it doesn't waste time re-squeezing photos and videos that can't get any smaller.
+**The default level beats 7-Zip's fastest level on speed and on size.** 3301-Yup Normal packs **1.5 to 2.2× faster** than 7-Zip Fastest, and its archives are up to **39 % smaller**. 3301-Yup packs on every core at once, and it doesn't waste time re-squeezing photos and videos that can't get any smaller.
 
-<p align="center"><img src="assets/speed.png" alt="Packing 343 MB: 3301-Yup 2.1 s, 7-Zip 5.7 s" width="80%"></p>
+<p align="center"><img src="assets/speed.png" alt="Packing time on three test sets. 88,485 small files: 3301-Yup Normal 6.9 s, 7-Zip Fastest 15 s. All values are in the tables below." width="80%"></p>
 
-**2.7× faster** than 7-Zip on the same folder. Same files, same PC, less waiting.
+<p align="center"><img src="assets/size.png" alt="Archive size on three test sets. 88,485 small files: 3301-Yup Normal 156 MB, 7-Zip Fastest 227 MB. All values are in the tables below." width="80%"></p>
+
+### Unpacking
+
+| Test set | 3301-Yup | 7-Zip |
+|---|---|---|
+| 88,485 small files | 70 s | 69 s |
+| Text and code | 0.6 to 0.7 s | 0.5 to 1.1 s |
+| Programs | about 1 s | 0.6 to 2.3 s |
+
+Ranges run from the fastest to the strongest level. With many small files, most of that time is Windows creating the files.
+
+### Where 7-Zip still wins
+
+- **Ultra on many small files:** 7-Zip packs 88,485 files in 69 s to 107 MB, 3301-Yup in 90 s to 109 MB.
+- **Unpacking many small files:** 69 s against 70 s, and its fastest level unpacks single big files a bit quicker.
+- **Maximum against 7-Zip Normal** is faster on all three sets, but a tie on size for text and code, and 1 MB behind for programs.
+
+Photos and videos barely shrink in any program. Your files will give different numbers.
+
+<details>
+<summary>How this was measured</summary>
+
+One PC: Ryzen 7 5800X, 16 threads, Windows 11, nothing else running. 3301-Yup 0.7.0 against 7-Zip 26.02 as `.7z` at Fastest (mx1), Normal (mx5, its default) and Ultra (mx9). Real writes to disk, and each 3301-Yup archive was unpacked and compared byte for byte.
+
+- **88,485 small files:** the source code of Rust crates, 2 GB
+- **Text and code:** the same kind of files plus documentation joined into one 800 MB file
+- **Programs:** Rust toolchain files joined into one 800 MB file
+
+</details>
 
 ## 🖥️ Looks like this
 
@@ -52,7 +81,7 @@ You see both files with their real icons, sizes and dates, then pick **Yes**, **
 
 | | |
 |---|---|
-| 📦 **Packs** | into `.yup`: zstd on every CPU core, with media stored as-is |
+| 📦 **Packs** | into `.yup`: zstd on every CPU core, small files packed together for smaller archives, media stored as-is |
 | 📂 **Opens** | `.yup` `.zip` `.7z` `.rar` `.tar` `.tar.gz` `.tgz` `.gz`, password zip/7z included |
 | 🖱️ **Right-click menu** | Extract here · Extract to folder · Add to *name*.yup |
 | 💣 **Zip bomb shield** | refuses archives that would blow up to over 1000× their size, and checks free disk space first |
